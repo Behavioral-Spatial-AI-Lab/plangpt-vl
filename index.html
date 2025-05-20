@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PlanGPT-VL</title>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Multimodal Multi-image Understanding for Evaluating Multimodal Large Language Models">
+  <meta name="keywords" content="PlanVLM-bench, LVLM, LVLM Evaluation, multiple images, Vision Language Model, Large Language Model, Large Multimodal Model, artificial intelligence, AI, AGI, artificial general intelligence">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PlanGPT-VL: Enhancing Urban Planning with Domain-Specific Vision-Language Models</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./css/bulma.min.css">
+  <link rel="stylesheet" href="./css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./css/bulma-slider.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./css/index.css">
+  <link rel="stylesheet" href="./css/leaderboard.css">
+
+  <style>
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<!-- <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: flex-end;">
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://github.com">
+            <b>PlanGPT-VL</b> <p style="font-size:18px; display: inline; margin-left: 5px;">🔥</p>
+          </a>
+          <a class="navbar-item" href="https://github.com">
+            <b>PlanVLM-Bench</b> <p style="font-size:18px; display: inline; margin-left: 5px;">🔥</p>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav> -->
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title is-bold">
+            <span class="MMIU" style="vertical-align: middle">Enhancing Urban Planning with Domain-Specific Vision-Language Models</span>
+            </h1>
+          <h2 class="subtitle is-3 publication-subtitle">
+            Enhancing Urban Planning with Domain-Specific Vision-Language Models
+          </h2>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              He Zhu<sup style="color:#6fbf73;">1,</sup><sup style="color:#ffac33;">2</sup></a>
+              ,
+            </span>
+            <span class="author-block">
+              Junyou Su<sup style="color:#6fbf73;">1,</sup><sup style="color:#ffac33;">2</sup></a>
+              ,
+            </span>
+            <span class="author-block">
+              Minxin Chen<sup style="color:#6fbf73;">1,</sup><sup style="color:#ffac33;">2</sup></a>
+              ,
+            </span>
+            <span class="author-block">
+              Yijie Deng<sup style="color:#6fbf73;">1,</sup><sup style="color:#ffac33;">2</sup></a>
+              ,
+            </span>
+            <span class="author-block">
+              Wen Wang<sup style="color:#6fbf73;">1,</sup><sup style="color:#ffac33;">2</sup></a>
+              ,
+            </span>
+            <span class="author-block">
+              Wenjia Zhang<sup>*,</sup><sup style="color:#6fbf73;">1,</sup><sup style="color:#ed4b82;">3</sup></a>
+<!--             <span class="author-block">Quanfeng Lu<sup style="color:#6fbf73;">1</sup><sup>,</sup><sup style="color:#ffac33;">2</sup>,</span>
+            <span class="author-block">Hao Tian<sup style="color:#007bff;">4</sup>,</span>
+            <span class="author-block">Jiaqi Liao<sup style="color:#6fbf73;">1</sup>,</span>
+            <span class="author-block">Xizhou Zhu<sup style="color:#9b51e0;">5</sup><sup>,</sup><sup style="color:#6fbf73;">1</sup><sup>,</sup><sup style="color:#007bff;">4</sup>,</span>
+            <span class="author-block">Jifeng Dai<sup style="color:#9b51e0;">5</sup><sup>,</sup><sup style="color:#6fbf73;">1</sup>,</span>
+            <span class="author-block">Yu Qiao<sup style="color:#6fbf73;">1</sup>,</span>
+            <span class="author-block">
+              Ping Luo<sup style="color:#ed4b82;">3</sup><sup>,</sup><sup style="color:#6fbf73;">1</sup></a>
+              ,
+          </span>
+          <span class="author-block">
+              Kaipeng Zhang<sup>†,</sup><sup style="color:#6fbf73;">1</sup></a>
+              ,
+          </span>
+          <span class="author-block">
+              Wenqi Shao<sup>†,</sup><sup style="color:#6fbf73;">1</sup></a>
+          </span> -->
+          
+          </div>
+          
+          <br>
+          
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup style="color:#6fbf73;">1</sup>Behavioral and Spatial AI Lab, Tongji University</span>
+            <span class="author-block"><sup style="color:#ffac33;">2</sup>Behavioral and Spatial AI Lab, Peking University</span>
+            <span class="author-block"><sup style="color:#ed4b82;">3</sup>College of Architecture and Urban Planning, Tongji University</span>
+<!--             <span class="author-block"><sup style="color:#ffac33;">2</sup>Shanghai Jiao Tong University,</span></br>
+            <span class="author-block"><sup style="color:#ed4b82;">3</sup>The University of Hong Kong,</span>
+            <span class="author-block"><sup style="color:#007bff;">4</sup>SenseTime Research,</span>
+            <span class="author-block"><sup style="color:#9b51e0;">5</sup>Tsinghua University</span> -->
+          </div>
+
+          <br>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><a href="mailto:zhangkaipeng@pjlab.org.cn">wenjiazhang@pku.edu.cn</a></span>
+          </div>
+          
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://modelscope.cn/models/chichi56/plangpt-VL-10K"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span>Model</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://modelscope.cn/studios/chichi56/PlanGPT-VL/summary"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span>Model-Test</span>
+                </a>
+              </span>
+              <!-- <span class="link-block">
+                <a href="https://github.com/Behavioral-Spatial-AI-Lab/plangpt-vl"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span> -->
+              
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container" style="margin-bottom: 2vh;">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">🔔News</h2>
+        <div class="content has-text-justified">
+          <p>
+            <b>🔥[2025-05-20] 我们已经在Modelscope上开源了<a href="https://modelscope.cn/models/chichi56/plangpt-VL-10K" target="_blank">PlanGPT-VL</a>，并开放了<a href="https://modelscope.cn/studios/chichi56/PlanGPT-VL/summary" target="_blank">测试通道</a></b>
+          </p>
+      </div>      
+      <h2 class="title is-3">Introduction</h2>
+        <div class="content has-text-justified">
+          <p>
+            在城市规划领域，尽管规划图对城市规划师及相关教育环境具有重要意义，现有的视觉语言模型（Vision-Language Models, VLMs）往往无法有效地分析和评估这些图纸。规划图用于可视化土地利用、基础设施布局和功能分区，分析这类图纸需要对空间结构、规范要求以及多尺度特征具备专业理解。为解决这一挑战，我们提出了PlanGPT-VL，这是首个专为城市规划图设计的领域特定视觉语言模型。该模型引入了三项创新方法：（1）基于局部性的视觉问答（VQA）数据提取；（2）基于扩散模型的规划图增强；（3）通过结合强化学习技术的扎根式图像描述，降低幻觉生成风险。系统评估表明，在城市规划图的解读任务中，PlanGPT-VL显著优于通用的先进视觉语言模型，为城市规划专业人员提供了一种高可信度的地图分析、评估与教学工具，同时确保事实准确性。<br>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+</div>
+</section>
+
+<!-- <section class="hero is-light is-small">
+  <div class="hero-body has-text-centered">
+  <h1 class="title is-1 MMIU">
+    <span class="MMIU" style="vertical-align: middle">MMIU</span>
+  </h1>
+  </div>
+</section> -->
+
+<!-- <section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Overview</h2>
+        <div class="content has-text-justified">
+          <img src="./pictures/VLMbench250512.png" alt="pipeline" class="center">
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<section class="section">
+  <div class="container", style="margin-bottom: 2vh;">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths has-text-centered">
+        <h2 class="title is-3">Framework Design</h2>
+        <div class="content has-text-justified" style="margin-bottom: 2vh;">
+          <p>
+            目标： 为城市规划领域合成高质量、低幻觉的视觉指令调优数据。<br>
+            <br>
+            三阶段方法：<br>
+            <ul>
+              <li>数据预处理：收集5000份规划图，专家标注1K高质量样本。</li>
+              <li>指令-响应合成：基于种子数据生成多样化指令，采用关键点思维(CPT)减少幻觉。</li>
+              <li>模型特定重写：使用目标模型重写响应，符合专业语言模式。</li>
+            </ul>
+            关键创新：<br>
+            <ul>
+              <li>分布式指令合成：15种任务类型，50K问答对。</li>
+              <li>关键点思维：结构化验证减少事实错误。</li>
+              <li>训练方法：监督微调+强化学习+推理时拒绝采样。</li>
+            </ul>
+          </p>
+          <img src="./figures/planannoV.png" alt="framework" class="center">
+          <figcaption>
+            <p style="text-align: center;font-style: italic;">
+              <font color="061E61">
+                  <b>Figure 1:</b> PlanAnno-V Architecture.
+              </font>
+            </p>
+          </figcaption>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <!-- <div class="column is-full-width has-text-centered"> -->
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Performance</h2>
+        <figure class="image has-text-centered">
+          <img src="./figures/dimensions_distribution.png" alt="framework" class="center" style="width: 80%;">
+          <figcaption>
+            <p style="text-align: center;font-style: italic;">
+              <font color="061E61">
+                <b>Figure 2</b> PlanANNO-V Dimensions Distribution.
+              </font>
+            </p>
+          </figcaption>
+        </figure>
+        <br>
+        <figure class="image has-text-centered">
+          <img src="./figures/UMAP_visualization.png" alt="framework" class="center" style="width: 80%;">
+          <figcaption>
+            <p style="text-align: center;font-style: italic;">
+              <font color="061E61">
+                <b>Figure 3</b> UMAP_Visualization.
+              </font>
+            </p>
+          </figcaption>
+        </figure>
+        <br>
+        <figure class="image has-text-centered">
+          <img src="./figures/attention_distribution.png" alt="framework" class="center" style="width: 80%;">
+          <figcaption>
+            <p style="text-align: center;font-style: italic;">
+              <font color="061E61">
+                <b>Figure 4</b> Examples of Attention Distribution in Beijing.
+              </font>
+            </p>
+          </figcaption>
+        </figure>
+        <br>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <!-- <div class="column is-full-width has-text-centered"> -->
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Results</h2>
+        <figure class="image has-text-centered">
+          <img src="./figures/table1.png" alt="framework" class="center" style="width: 80%;">
+          <figcaption>
+            <p style="text-align: center;font-style: italic;">
+              <font color="061E61">
+                <b>Figure 5</b> Performance comparison on PlanBench with detailed and main categories.
+              </font>
+            </p>
+          </figcaption>
+        </figure>
+        <br>
+        <figure class="image has-text-centered">
+          <img src="./figures/table2.png" alt="framework" class="center" style="width: 80%;">
+          <figcaption>
+            <p style="text-align: center;font-style: italic;">
+              <font color="061E61">
+                <b>Figure 6</b> Comprehensive ablation study results on PlanBench and general vision-language benchmarks.
+              </font>
+            </p>
+          </figcaption>
+        </figure>
+        <br>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .image-row {
+      display: center; /* Use flexbox layout */
+  }
+  .image-row img {
+      width: 40%; /* Each image takes up 50% of the width */
+  }
+</style>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <p style="color: red; font-weight: bold;">
+          Note: This content is part of a manuscript under submission. Please do not cite until it is officially published. The arxiv article will be launched soon.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- @PAN TODO: bibtex -->
+<!-- <section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3 has-text-centered">BibTeX</h2>
+    <pre><code>
+      @misc{meng2024mmiumultimodalmultiimageunderstanding,
+        title={MMIU: Multimodal Multi-image Understanding for Evaluating Large Vision-Language Models}, 
+        author={Fanqing Meng and Jin Wang and Chuanhao Li and Quanfeng Lu and Hao Tian and Jiaqi Liao and Xizhou Zhu and Jifeng Dai and Yu Qiao and Ping Luo and Kaipeng Zhang and Wenqi Shao},
+        year={2024},
+        eprint={2408.02718},
+        archivePrefix={arXiv},
+        primaryClass={cs.CV},
+        url={https://arxiv.org/abs/2408.02718}, 
+  }
+</code></pre>
+  </div>
+</section> -->
+
+<!-- <footer class="footer">
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is website adapted from <a href="https://github.com/OpenGVLab/MMT-Bench">MMT-Bench</a>, <a href="https://mmmu-benchmark.github.io/">MMMU</a>, <a href="https://mathvista.github.io/">MathVista</a> and <a href="https://nerfies.github.io/">Nerfies</a>, licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+
+</footer> -->
+
+<style>
+  .hidden {
+      display: none;
+  }
+  .sortable:hover {
+      cursor: pointer;
+  }
+  .asc::after {
+      content: ' ↑';
+  }
+  .desc::after {
+      content: ' ↓';
+  }
+
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+  }
+
+  .publication-links .link-block {
+    margin: 0 0.5rem;
+    display: inline-block;
+  }
+  #toggleButton {
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    color: #555555;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 25px; 
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition-duration: 0.4s;
+  }
+
+  #toggleButton:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); /* 鼠标悬停时的阴影效果 */
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+  }
+
+  th, td {
+      text-align: left;
+      padding: 8px;
+  }
+
+  th {
+      background-color: #f2f2f2;
+      border-bottom: 2px solid #ddd;
+  }
+
+  td:hover {background-color: #ffffff;}
+</style>
+</body>
+</html>
